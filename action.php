@@ -34,6 +34,8 @@
 <h1>Aanvraag ontvangen.</h1>
 
 <?php
+
+
 //echo htmlspecialchars($_POST['name']) . "</br>";
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
@@ -74,9 +76,11 @@ if($all_files !== false){
 $format = "%1$02d";
 $filename = $filename . sprintf($format, $curnum);
 $id = $filename;
+$photodir = scandir(getcwd() . "/tmp/");
+$photo = getcwd() . "/tmp/" . end($photodir);
 
 echo "</br>";
-$uploadName = explode(".", basename($_FILES["fileToUpload"]["name"]), 9);
+$uploadName = explode(".", $photo, 9);
 $target_file = $target_dir . $filename . "." . end($uploadName);		//basename($_FILES["fileToUpload"]["name"]);
 
 $uploadOk = 1;
@@ -97,20 +101,24 @@ if (file_exists($target_file)) {
 */
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-	echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.</br>";
-	echo $imageFileType . "</br>";
-	//$uploadOk = 0;
+	if (sizeof($photodir) !== 2){
+		unlink($photo);
+		echo "Sorry, alleen JPG, JPEG, PNG & GIF bestanden zijn toegestaan.<br>";
+	} else {
+		echo "Geen foto gegeven.<br>";
+	}
+	$uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-	echo "Sorry, your file was not uploaded.";
+	return;
 	// if everything is ok, try to upload file
 } else {
-	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+	if (rename($photo, $target_file)) {
 		echo "Bonnetje met nummer ". $filename . " is ingediend.";
 	} else {
-		echo "Sorry, there was an error uploading your file.";
+		echo "Sorry, there was an error uploading your file." . $photo . "  " . $target_file;
 	}
 }
 echo "</br></br></br></br>";
@@ -118,7 +126,6 @@ echo "</br></br></br></br>";
 //EXCEL
 $excelFile = getcwd() . "/" . $speltak . "/" . date("Y") . "/data.xlsx";
 
-echo $excelFile;
 
 if (!file_exists($excelFile)){
 	if(!copy(getcwd() . "/templates/" . "data.xlsx", $excelFile));
@@ -133,11 +140,8 @@ for($i = 1;;$i++) {
 	if($cell->getValue() === NULL || $cell->getValue() === ''){
 		$newRow = $i;
 		break;
-	} else {
-		echo $cell->getValue()."<br>";
 	}
 }
-echo $newRow;
 
 $ea->getActiveSheet()->setCellValue("A".$newRow, $id);
 $ea->getActiveSheet()->setCellValue("B".$newRow, $_POST['name']);
