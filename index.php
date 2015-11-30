@@ -96,7 +96,7 @@ function abortHandler(event){
 			 <p>IBAN: <input type="text" name="iban" required/></p>
 			 <p>Rek. Houder: <input type="text" name="rekhouder" required/></p>
 			 <p>Bedrag in &#8364: <input class="money" type="number" step="0.01" name="amount" required/></p>
-			<p>Omschrijving: <textarea rows="3" cols="20" name='comment' placeholder="omschrijving" required>test</textarea>
+			<p>Omschrijving: <textarea rows="3" cols="20" name='comment' placeholder="omschrijving" required></textarea>
 			<p><input type="submit" value="Bonnetje indienen" name="submit" id="submit" style="visibility: hidden"/></p>
 		</form>
 	</div>
