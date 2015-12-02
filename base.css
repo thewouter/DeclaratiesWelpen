@@ -1,0 +1,81 @@
+
+.form {
+    width: 100%;
+    clear: both;
+}
+.form input {
+    width: 60%;
+    clear: both;
+    float: right;
+}
+.form textarea {
+    width: 60%;
+    clear: both;
+    float: right;
+}
+.form select {
+    width: 60%;
+    clear: both;
+    float: right;
+}
+.form progress {
+    width: 60%;
+    clear: both;
+    float: right;
+}
+.form button {
+    width: 60%;
+    clear: both;
+    float: right;
+}
+.container {
+	width: 700px;
+	margin:0 auto;
+}
+h1 {
+	text-align: center;
+}
+body{
+	background-color: #00cc65;
+}
+.navigation {
+    line-height:20%;
+    background-color:#339933;
+    height:300px;
+    width:110px;
+    float:left;
+    padding:5px;
+    border: 1px solid black;
+}
+.section {
+    width:70%;
+    float:left;
+    padding:30px;
+    padding-top: 0px;
+}
+.menuitem{
+	padding: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: #1e821e;
+	border-radius: 10px;
+	border: 1px solid #1e821e;
+	margin-bottom: 5px;
+}
+.menuitem:HOVER {
+	border: 1px solid black;
+}
+table, tr, th, td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+thead {
+	background-color: #339933;
+}
+table{
+	width: 100%;
+	table-layout: fixed;
+}
+#name{
+	width: 40%;
+}

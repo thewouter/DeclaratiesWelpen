@@ -1,42 +1,10 @@
 <html>
  <head>
   <title>Declareren Welpen Scouting dedemsvaart </title>
-  <style type="text/css">
-    .form {
-        width: 100%;
-        clear: both;
-    }
-    .form input {
-        width: 60%;
-        clear: both;
-        float: right;
-    }
-    .form textarea {
-        width: 60%;
-        clear: both;
-        float: right;
-    }
-    .container {
-    	width: 700px;
-    	margin:0 auto;
-    }
-    h1 {
-    	text-align: center;
-    }
-    body{
-    	background-color: #00cc65;
-    }
-    
-    </style>
+	<link rel="stylesheet" type="text/css" href="base.css">
  </head>
 <body>
-<div class='container' >
-<h1>Aanvraag ontvangen.</h1>
-
 <?php
-
-
-//echo htmlspecialchars($_POST['name']) . "</br>";
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
@@ -79,26 +47,11 @@ $id = $filename;
 $photodir = scandir(getcwd() . "/tmp/");
 $photo = getcwd() . "/tmp/" . end($photodir);
 
-echo "</br>";
 $uploadName = explode(".", $photo, 9);
 $target_file = $target_dir . $filename . "." . end($uploadName);		//basename($_FILES["fileToUpload"]["name"]);
 
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-/*
-echo "</br>";
-echo "target: " . $target_file;
-echo "</br>";
-/*
-// Check if file already exists
-if (file_exists($target_file)) {
-	echo "Sorry, file already exists.</br>";
-	$uploadOk = 0;
-} else {
-	//echo "File doesn't exist jet. </br>";
-}
-*/
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
 	if (sizeof($photodir) !== 2){
@@ -116,13 +69,15 @@ if ($uploadOk == 0) {
 	// if everything is ok, try to upload file
 } else {
 	if (rename($photo, $target_file)) {
+		
+		echo "<h3>Declaratie Ingediend.</h3>";
+		 
+		
 		echo "Bonnetje met nummer ". $filename . " is ingediend.";
 	} else {
 		echo "Sorry, there was an error uploading your file." . $photo . "  " . $target_file;
 	}
 }
-echo "</br></br></br></br>";
-
 //EXCEL
 $excelFile = getcwd() . "/" . $speltak . "/" . date("Y") . "/data.xlsx";
 
@@ -154,5 +109,4 @@ $objWriter = new PHPExcel_Writer_Excel2007($ea);
 $objWriter->save($excelFile);
 
 ?>
-</div>
 </body>
