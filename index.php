@@ -37,6 +37,12 @@
 					
 				?>
 			</div>
+			<div class="footer">
+				<p id="left_footer">Door Wouter van Harten</p>
+				<div class="right_footer">
+					<p>Contact<a href="mailto:woutervh@live.nl"> Mij </a> voor vragen / opmerkingen</p>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

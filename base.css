@@ -47,6 +47,18 @@ body{
     padding:5px;
     border: 1px solid black;
 }
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 700px;
+}
+.footer #left_footer{
+	float: left;
+}
+.right_footer{
+	float: right;
+	text-align: left;
+}
 .section {
     width:70%;
     float:left;
