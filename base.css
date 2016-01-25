@@ -65,6 +65,9 @@ body{
     padding:30px;
     padding-top: 0px;
 }
+.dec_table{
+	overflow-x:auto;
+}
 .menuitem{
 	padding: 10px;
 	padding-top: 15px;
@@ -81,6 +84,13 @@ table, tr, th, td{
 	border: 1px solid black;
 	border-collapse: collapse;
 }
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+tr:nth-child(even) {
+	background-color: #6EBD74
+}
 thead {
 	background-color: #339933;
 }
@@ -89,5 +99,5 @@ table{
 	table-layout: fixed;
 }
 #name{
-	width: 40%;
+	width: 35%;
 }
