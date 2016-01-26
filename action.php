@@ -24,8 +24,11 @@ function thisYear($var) {
 }
 
 if($speltak == "both"){
-	processBon("jongens", 0.5, true);
-	processBon("meisjes", 0.5, true);
+	if(processBon("jongens", 0.5, true)){
+		if(processBon("meisjes", 0.5, false)){
+			echo "<p>Alles is goed gegaan!</p>";
+		}
+	}
 } else {
 	processBon($speltak, 1, false);
 }
@@ -84,21 +87,23 @@ function processBon($speltak, $factor, $both){
 			 
 			
 			echo "Bonnetje met nummer ". $filename . " is ingediend.";
+			return processExcel($speltak, $id, $factor);
 		} else {
 			echo "Sorry, there was an error uploading your file." . $photo . "  " . $target_file;
+			return false;
 		}
 	} else {
 		if (copy($photo, $target_file)) {
-			
-			echo "<h3>Declaratie Ingediend.</h3>";
-			 
-			
 			echo "Bonnetje met nummer ". $filename . " is ingediend.";
+			return processExcel($speltak, $id, $factor);
 		} else {
 			echo "Sorry, there was an error uploading your file." . $photo . "  " . $target_file;
+			return false;
 		}
 	}
-	//EXCEL
+}
+
+function processExcel($speltak, $id, $factor){
 	$excelFile = getcwd() . "/" . $speltak . "/" . date("Y") . "/data.xlsx";
 	
 	
@@ -128,6 +133,7 @@ function processBon($speltak, $factor, $both){
 	
 	$objWriter = new PHPExcel_Writer_Excel2007($ea);
 	$objWriter->save($excelFile);
+	return true;
 }
 ?>
 </body>
