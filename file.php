@@ -46,7 +46,8 @@
 			 <p> Speltak: <select name="speltak" required>
 				 <option value="jongens">Welpen Jongens </option>
 				 <option value="meisjes">Welpen Meisjes </option> 
-				 <option value="both">Welpen Jongens en Meisjes </option> </select></p>
+				 <option value="both">Welpen Jongens en Meisjes </option>
+				 <option value="npk">NPK </option> </select></p>
 			 <p>Naam: <input type="text" name="name" required/></p>
 			 <p>IBAN: <input type="text" name="iban" required/></p>
 			 <p>Rek. Houder: <input type="text" name="rekhouder" required/></p>
