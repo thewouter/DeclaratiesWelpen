@@ -1,12 +1,12 @@
 <html>
  	<head>
-		<title>Declareren Welpen Scouting dedemsvaart </title>
+		<title>Declareren Welpen/Stam Scouting dedemsvaart </title>
 		<link rel="stylesheet" type="text/css" href="base.css">
 	</head>
 	<body>
 		 <div class="container">
 			 <div class="header">
-				 <h1>Declaraties Welpen Scouting Dedemsvaart</h1>
+				 <h1>Declaraties Welpen/Stam Scouting Dedemsvaart</h1>
 			</div>
 			<div class="navigation">
 				<div class="menuitem" onclick="location.href='index.php'">
@@ -25,7 +25,7 @@
 						include $_GET['loc'] . ".php";
 					} else {
 						?>
-						<h3>Declareren bij de Welpen.</h3>
+						<h3>Declareren bij de Welpen/Stam.</h3>
 						<p>Als je een bonnetje hebt kun je deze hier declareren. Maak daarvoor en foto
 						van het bonnetje, selecteer de correcte speltak en vul de rest van het formulier in.
 						Als het bonnetje geupload is kun je alles verzenden.</p>

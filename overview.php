@@ -2,7 +2,7 @@
 <h3>Overzicht declaraties van dit jaar</h3>
 <div class="dec_table">
 	<?php 
-	$speltakken = array(0=>"jongens", 1=>"meisjes",2=>"npk");
+	$speltakken = array(0=>"jongens", 1=>"meisjes",2=>"npk",3=>"stam");
 	foreach($speltakken as $speltak){
 		$excel = getcwd() . "/" . $speltak . "/" . date("Y") . "/data.xlsx";
 		if(file_exists($excel)){
